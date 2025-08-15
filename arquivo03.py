@@ -8,4 +8,3 @@ class Jogador:
 
     def exibir_pontos(self):
         print(f"Jogador: {self.nome} | Pontos: {self.pontos}")
-        
