@@ -1,14 +1,14 @@
 class ContaBancaria:
     def __init__ (self,titular,saldo):
-        self._tirular = titular
+        self._titular = titular
         self._saldo = saldo
 
-    def get_titu(self):
+    def get_titular(self):
         return self._titular
 
-    def set_titu(self, novo_titu):
-        if isinstance(novo_titu, str) and novo_titu.strip() != "":
-            self._titular = novo_titu
+    def set_titular(self, novo_titular):
+        if isinstance(novo_titular, str) and novo_titular.strip() != "":
+            self._titular = novo_titular
         else:
             print("Nome Inválido!")
 
