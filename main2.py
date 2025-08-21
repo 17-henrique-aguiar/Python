@@ -16,7 +16,7 @@ class SistemaEscola:
         self.root = root
         self.root.title("Sistema Escolar - EFG")
         self.root.geometry("800x400")
-        self.root.configure(bg="yellow")
+        self.root.configure(bg="green")
 
         self.alunos = []
 
@@ -25,35 +25,35 @@ class SistemaEscola:
         img = img.resize((80, 80))  # Redimensiona
         self.logo = ImageTk.PhotoImage(img)     #   Converte para o formato Tkinter
 
-        lbl_logo = tk.Label(self.root, image=self.logo, bg="yellow")
+        lbl_logo = tk.Label(self.root, image=self.logo, bg="green")
         lbl_logo.place(x=10, y=10)      # Posição no canto superior esquerdo
 
         # Frame principal
 
-        frame_principal = tk.Frame(self.root, bg="yellow")
+        frame_principal = tk.Frame(self.root, bg="green")
         frame_principal.pack(fill="both", expand=True, pady=20, padx=120)     # Deixa espaço para o logo
 
         # Formulário (esquerda)
-        frame_form = tk.Frame(frame_principal, bg="yellow", pady=10, padx=10)
+        frame_form = tk.Frame(frame_principal, bg="green", pady=10, padx=10)
         frame_form.pack(side="left", fill="y")
 
-        tk.Label(frame_form, text="Nome:", bg="yellow", font=("Arial", 10, "bold")).grid(row=0, column=0, sticky="w", pady=5)
+        tk.Label(frame_form, text="Nome:", bg="green", font=("Arial", 10, "bold")).grid(row=0, column=0, sticky="w", pady=5)
         self.entry_name = tk.Entry(frame_form)
         self.entry_name.grid(row=0, column=1, pady=5)
 
-        tk.Label(frame_form, text="Idade:", bg="yellow", font=("Arial", 10, "bold")).grid(row=1, column=0, sticky="w", pady=5)
+        tk.Label(frame_form, text="Idade:", bg="green", font=("Arial", 10, "bold")).grid(row=1, column=0, sticky="w", pady=5)
         self.entry_idade = tk.Entry(frame_form)
         self.entry_idade.grid(row=1, column=1, pady=5)
 
-        tk.Label(frame_form, text="Série:", bg="yellow", font=("Arial", 10, "bold")).grid(row=2, column=0, sticky="w", pady=5)
+        tk.Label(frame_form, text="Série:", bg="green", font=("Arial", 10, "bold")).grid(row=2, column=0, sticky="w", pady=5)
         self.entry_serie = tk.Entry(frame_form)
         self.entry_serie.grid(row=2, column=1, pady=5)
 
-        btn_add = tk.Button(frame_form, text="Registrar Aluno", bg="orange", fg="black", font=("Arial", 10, "bold"), command=self.adicionar_aluno)
+        btn_add = tk.Button(frame_form, text="Registrar Aluno", bg="gray", fg="black", font=("Arial", 10, "bold"), command=self.adicionar_aluno)
         btn_add.grid(row=3, column=0, columnspan=2, pady=10)
 
         # Tabela (direita)
-        frame_tabela = tk.Frame(frame_principal, bg="yellow", padx=10, pady=10)
+        frame_tabela = tk.Frame(frame_principal, bg="green", padx=10, pady=10)
         frame_tabela.pack(side="right", fill="both", expand=True)
 
         colunas = ("nome", "idade", "serie")
