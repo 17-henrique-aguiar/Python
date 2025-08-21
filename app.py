@@ -1,57 +1,62 @@
 import tkinter as tk
-from tkinter import messagebox
-from main import ContaBancaria    # Importa classe
+from models import Funcionario, Empresa
 
-class BancoApp:
-    def __init__(self, master, conta):
+class AppCadastro:
+    def __init__(self, master, empresa: Empresa):
         self.master = master
-        self.conta = conta
-        master.title("Sistema Bancário")
+        self.empresa = empresa
 
-        # Título
-        self.label = tk.Label(master, text=f"Bem-vindo, {self.conta.titular}!", font=("Arial", 14))
-        self.label.pack(pady=10)
+        master.title("Cadastro de Funcionários")
 
-        # Entrada de valor
-        self.valor_entry = tk.Entry(master, width=20)
-        self.valor_entry.pack(pady=5)
+        # Campos do fomulário
+        tk.Label(master, text="Nome:").grid(row=0, column=0, padx=5, pady=5)
+        self.entry_nome = tk.Entry(master)
+        self.entry_nome.grid(row=0, column=1, padx=5, pady=5)
 
-        # Botões
-        tk.Button(master, text="Depositar", command=self.depositar).pack(pady=5)
-        tk.Button(master, text="Sacar", command=self.sacar).pack(pady=5)
-        tk.Button(master, text="Ver Saldo", command=self.ver_saldo).pack(pady=5)
+        tk.Label(master, text="Cargo:").grid(row=1, column=0, padx=5, pady=5)
+        self.entry_cargo = tk.Entry(master)
+        self.entry_cargo.grid(row=1, column=1, padx=5, pady=5)
 
-    # Funções dos botões
-    def depositar(self):
-        try:
-            valor = float(self.valor_entry.get())
-            if self.conta.depositar(valor):
-                messagebox.showinfo("Depósito", f"Depósito de R$ {valor:.2f} realizado com sucesso!")
-            else:
-                messagebox.showwarning("Erro", "Valor inválido para depósito.")
-        except ValueError:
-            messagebox.showerror("Erro", "Digite um valor numérico.")
-        self.valor_entry.delete(0, tk.END)
+        tk.Label(master, text="Idade:").grid(row=2, column=0, padx=5, pady=5)
+        self.entry_idade = tk.Entry(master)
+        self.entry_idade.grid(row=2, column=1, padx=5, pady=5)
 
-    def sacar(self):
-        try:
-            valor = float(self.valor_entry.get())
-            if self.conta.sacar(valor):
-                messagebox.showinfo("Saque", f"Saque de R$ {valor:.2f} realizado com sucesso!")
-            else:
-                messagebox.showwarning("Erro", "Saldo insuficiente ou valor inválido.")
+        tk.Label(master, text="Salário:").grid(row=3, column=0, padx=5, pady=5)
+        self.entry_salario = tk.Entry(master)
+        self.entry_salario.grid(row=3, column=1, padx=5, pady=5)
 
-        except ValueError:
-            messagebox.showerror("Erro", "Digite um valor numérico.")
-        self.valor_entry.delete(0, tk.END)
+        # Botão salvar
+        self.btn_salvar = tk.Button(master, text="Salvar Funcionário", command=self.salvar_funcionario)
+        self.btn_salvar.grid(row=4, column=0, columnspan=2, pady=10)
 
-    def ver_saldo(self):
-        saldo = self.conta.get_saldo()
-        messagebox.showinfo("Saldo", f"Saldo atual: R$ {saldo:.2f}")
+        # Mensagem de status
+        self.label_status = tk.Label(master, text="", fg="green")
+        self.label_status.grid(row=5, column=0, columnspan=2)
 
-#-------------------- Execução ------------------------
+    def salvar_funcionario(self):
+        """Cria objeto Funcionario e salva na Empresa"""
+        nome = self.entry_nome.get()
+        cargo = self.entry_cargo.get()
+        idade = self.entry_idade.get()
+        salario = self.entry_salario.get()
+
+        if nome and cargo and idade and salario:
+            funcionario = Funcionario(nome, cargo, idade, salario)
+            self.empresa.adicionar_funcionario(funcionario)
+
+            self.label_status.config(text="Funcionário cadastrado com sucesso!", fg="green")
+
+            # limpa os campos
+            self.entry_nome.delete(0, tk.END)
+            self.entry_cargo.delete(0, tk.END)
+            self.entry_idade.delete(0, tk.END)
+            self.entry_salario.delete(0, tk.END)
+        else:
+            self.label_status.config(text="Preencha todos os campos!", fg="red")
+
+
 if __name__ == "__main__":
-    conta = ContaBancaria("Henrique", 0)   # Conta inicial
+    empresa = Empresa()
     root = tk.Tk()
-    app = BancoApp(root, conta)
+    app = AppCadastro(root, empresa)
     root.mainloop()
