@@ -1,8 +1,10 @@
 Sistemas em Tkinter
+- Pasta Arquivos - Atividades de prática
+
 - app1.py - Sistema de Banco 
 
-- app2.py e main.py - Sistema de Funcionários de uma empresa
+- app2.py, main.py e funcionarios.csv - Sistema de Funcionários de uma empresa
 
 - main2.py - Sistema de Escola para Cadastro de Alunos
 
-- Pasta Arquivos - Atividades de prática
+- chamada_db.py, chamada_app.py, notificacao.py e chamada.db - Sistema de Escola (Faltas e Presenças)
