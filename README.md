@@ -9,4 +9,4 @@ Sistemas em Tkinter
 
 - chamada_db.py, chamada_app.py, notificacao.py e chamada.db - Sistema de Escola (Faltas e Presenças)
 
-- app3.py e db.py - Loja Virtual com interface Streamlit
+- app3.py, db.py e loja.db - Loja Virtual com interface Streamlit
