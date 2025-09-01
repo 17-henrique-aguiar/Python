@@ -1,6 +1,6 @@
 import tkinter as tk
 from tkinter import messagebox
-from Projeto1.main import ContaBancaria    # Importa classe
+from bancoc import ContaBancaria    # Importa classe
 
 class BancoApp:
     def __init__(self, master, conta):
@@ -55,3 +55,4 @@ if __name__ == "__main__":
     root = tk.Tk()
     app = BancoApp(root, conta)
     root.mainloop()
+
