@@ -1,7 +1,7 @@
 Projetos:
 - Pasta Arquivos - Atividades de prática
 
-- app1.py - Sistema de Banco 
+- app1.py e bancoc.py - Sistema de Banco 
 
 - app2.py, main.py e funcionarios.csv - Sistema de Funcionários de uma empresa
 
