@@ -12,3 +12,5 @@ Projetos:
 - app3.py, db.py e loja.db - Loja Virtual com interface Streamlit
 
 - app4.py e home.html - Site de Ecommerce usando interface Flask
+
+- mercado.py - Projetos de produtos 
