@@ -13,4 +13,4 @@ Projetos:
 
 - app4.py e home.html - Site de Ecommerce usando interface Flask
 
-- mercado.py - Projetos de database
+- mercado - Projetos de database de produtos
