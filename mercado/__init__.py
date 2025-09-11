@@ -7,3 +7,4 @@ app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///mercado.db"
 db.init_app(app)
 
 from mercado import routes
+
