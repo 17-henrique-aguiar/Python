@@ -1,30 +1,20 @@
-import csv
-import os
+from mercado import db
 
-class Funcionario:
-    def __init__(self, nome, cargo, idade, salario):
-        self.nome = nome
-        self.cargo = cargo
-        self.idade = idade
-        self.salario = salario
+class User(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    usuario = db.Column(db.String(length=30),nullable=False, unique=True)
+    email = db.Column(db.String(length=50), nullable=False,unique=True)
+    senha = db.Column(db.String(length=60), nullable=False, unique=True)
+    valor = db.Column(db.Integer, nullable=False, default = 5000)
+    itens = db.relationship('Item', backref='dono_user', lazy=True)
 
-    def to_list(self):
-        """Retorna os dados do funcionário em lista para salvar no CSV"""
-        return[self.nome, self.cargo, self.idade, self.salario]
-    
-class Empresa:
-    def __init__(self, nome_arquivo="funcionarios.csv"):
-        self.nome_arquivo = nome_arquivo
+class Item(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    nome = db.Column(db.String(length=30), nullable= False, unique=True)
+    preco = db.Column(db.Integer, nullable= False)
+    cod_barra = db.Column(db.String(length=12), nullable= False, unique=True)
+    descricao = db.Column(db.String(length=1024), nullable= False, unique=True)
+    dono=db.Column(db.Integer, db.ForeignKey('user.id'))
 
-        # cria o arquivo CSV com cabeçalhos se não existir
-        if not os.path.exists(self.nome_arquivo):
-            with open(self.nome_arquivo, mode="w", newline="", encoding="utf-8") as f:
-                escritor = csv.writer(f)
-                escritor.writerow(["Nome", "Cargo", "Idade", "Salário"])
-    
-    def adicionar_funcionario(self, funcionario: Funcionario):
-        """Adiciona funcionários no arquivo CVS"""
-        with open(self.nome_arquivo, mode="a", newline="", encoding="utf-8") as f:
-            escritor = csv.writer(f)
-            escritor.writerow(funcionario.to_list())
-    
+    def __repr__(self):
+        return f"Item {self.nome}"
