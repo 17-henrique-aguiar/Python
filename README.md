@@ -1,4 +1,4 @@
-Projetos:
+Projetos de Sistemas:
 - Pasta Arquivos - Atividades de prática
 
 - app1.py e bancoc.py - Sistema de Banco 
