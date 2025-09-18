@@ -1,6 +1,6 @@
 from mercado import app
 from flask import render_template,redirect,url_for,flash
-from mercado.models import Item
+from mercado.models import Item,User
 from mercado.forms import CadastroForm
 from mercado import db
 
@@ -8,14 +8,14 @@ from mercado import db
 def page_home():
     return render_template("home.html")
 
-@app.route('/cadastro')
+@app.route('/cadastro', methods=['GET', 'POST'])
 def page_cadastro():
     form = CadastroForm()
     if form.validate_on_submit():
         usuario = User(
             usuario = form.usuario.data,
             email = form.email.data,
-            senha = form.senha.data
+            senha = form.senha1.data
         )
 
         db.session.add(usuario)
