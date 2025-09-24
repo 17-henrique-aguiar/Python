@@ -34,7 +34,16 @@ def page_produto():
 @app.route('/login', methods=['GET', 'POST'])
 def page_login():
     form = LoginForm()
+    if form.validate_on_submit():
+        usuario_logado = User.query.filter_by(usuario = form.usuario.data).first()
+        if usuario_logado and usuario_logado.converte_senha(senha_texto_claro = form.senha.data):
+            login_user(usuario_logado)
+            flash(f'Sucesso! Seu login é: {usuario_logado.usuario}', category='success')
+            return redirect(url_for('page_produto'))
+        else:
+            flash(f'Usuário ou senha estão incorretos! Tente novamente', category='danger')
     return render_template('login.html')
     
+
 
 
