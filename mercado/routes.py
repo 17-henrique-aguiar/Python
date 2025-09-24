@@ -30,3 +30,9 @@ def page_cadastro():
 def page_produto():
     itens = Item.query.all()
     return render_template('produtos.html', itens = itens)
+
+@app.route('/login', methods=['GET', 'POST'])
+def page_login():
+    return render_template('login.html')
+    
+
