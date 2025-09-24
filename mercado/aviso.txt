@@ -1,2 +1,0 @@
-examinar os arquivos python para ver se estão certos, parece que só o models está certo.
-se estiver errado, fazer upload da máquina da escola
