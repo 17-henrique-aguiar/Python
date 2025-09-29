@@ -11,6 +11,6 @@ Projetos de Sistemas:
 
 - app3.py, db.py e loja.db - Loja Virtual com interface Streamlit
 
-- app4.py e home.html - Site de Ecommerce usando interface Flask
+- app4.py - Site de Ecommerce usando interface Flask
 
 - mercado e instance - Projetos de database de produtos e usuario
